@@ -1,10 +1,11 @@
 import tailwindcss from '@tailwindcss/vite';
+import { removeDevOnlyPages } from './config/devPages';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', 'shadcn-nuxt'],
+  modules: ['@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
@@ -16,15 +17,16 @@ export default defineNuxtConfig({
     },
   },
   components: [{ path: '~/components', pathPrefix: false }],
-  shadcn: {
-    prefix: '',
-    componentDir: './app/components/ui',
+  $production: {
+    hooks: {
+      'pages:extend': removeDevOnlyPages,
+    },
   },
   typescript: {
     strict: true,
     // Тесты и конфиги тестов проверяются вместе с остальным кодом (и видны ESLint).
     nodeTsConfig: {
-      include: ['../tests/**/*', '../vitest.config.ts', '../playwright.config.ts'],
+      include: ['../tests/**/*', '../config/**/*', '../vitest.config.ts', '../playwright.config.ts'],
     },
   },
 });

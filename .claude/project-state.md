@@ -3,41 +3,35 @@
 Обновляется в конце каждого шага и при появлении неоднозначностей. Архитектура и соглашения: `CLAUDE.md`. Правила кода и ревью: `.claude/skills/nuxt-review/SKILL.md`.
 
 ## Текущий шаг
-**Шаг 0: каркас проекта.** Реализован и проверен, ждёт ревью и «ок» пользователя на коммит. Коммитов в репозитории пока нет.
+**Шаг 1: дизайн-система и именованные роуты.** Реализован и проверен, `/code-review` выполнен, замечания исправлены. Ждёт «ок» пользователя на коммит.
 
-## Сделано в шаге 0
-- `git init -b main`, remote `origin` = git@github.com:bugrov/bunpo.git.
-- `CLAUDE.md`, скилл `nuxt-review`, этот файл.
-- Nuxt 4.6 (pnpm), Tailwind v4 через `@tailwindcss/vite`, shadcn-nuxt (`components.json`, `app/lib/utils.ts` с `cn`), тема Acid Lime в `app/assets/css/main.css` (только тёмная, `html.dark`).
-- Автоимпорт компонентов с `pathPrefix: false`, заготовка страницы `app/pages/index.vue`.
-- ESLint: typescript-eslint strictTypeChecked + stylisticTypeChecked, `curly: all`, пустая строка перед `return`, запрет `any`, `as unknown as`, `sql.raw`, объявлений типов вне `types/`, импортов вверх по слоям FSD. Проверено на заведомо плохом файле.
-- Stylelint (standard + vue + postcss-html), BEM-паттерн классов, директивы Tailwind (`@apply`, `@reference`) разрешены. Совместимость с Tailwind v4 проверена на тестовых файлах.
-- Vitest 5 (проекты `unit` и `nuxt`), Playwright (mobile Pixel 7 + desktop), тест `cn` и e2e-smoke.
-- Скрипты: `typecheck`, `lint`, `lint:fix`, `lint:style`, `test`, `test:e2e`. `tsconfig` покрывает тесты и конфиги (`typescript.nodeTsConfig.include`).
-- CI: `.github/workflows/ci.yml` (typecheck, lint, lint:style, test, e2e).
-- Все проверки зелёные: typecheck, lint, lint:style, test (2), test:e2e (2).
+## Сделано
+- Шаг 0 закоммичен и запушен (`a33aba4`): каркас Nuxt 4, Tailwind v4, ESLint/Stylelint, Vitest, Playwright, CI.
+- Шаг 1 (не закоммичен, изменения в индексе):
+  - `shared/routes.ts` (`ROUTE` as const: `home`, `styleguide`), `shared/types/index.ts` (`RouteName`). Импорт в страницах явный: `#shared/routes`.
+  - Компоненты `app/components/ui/`: `UiButton`, `UiInput`, `UiLabel`, `UiField`, `UiCard`, `UiBadge`, типы props в `ui/types.ts`. BEM + `@apply`, `@reference` на `main.css`.
+  - Тонкие страницы `app/pages/index.vue`, `app/pages/styleguide.vue` → `components/pages/HomePage.vue`, `StyleguidePage.vue` (витрина `/styleguide`).
+  - ESLint: запрет строковых путей в `navigateTo(...)` и статического `to="..."` у NuxtLink/RouterLink.
+  - Тесты (написаны до реализации): `tests/unit/routes.test.ts` (имя у каждой страницы, уникальность, тонкие страницы), `tests/unit/ruleset.test.ts` (правила навигации), `tests/nuxt/ui.test.ts` (компоненты), `tests/e2e/styleguide.spec.ts`.
+  - Исправления по `/code-review`: окончания строк приведены к LF (`.gitattributes`, `.editorconfig`), `no-restricted-syntax` в файлах типов больше не отключается целиком, запреты `navigateTo({ path })` и `:to="'/x'"`, токен `--success`, типы `tel`/`url` и disabled у `UiInput`, удалён неиспользуемый `RouteName`.
+  - Все проверки зелёные: typecheck, lint, lint:style, vitest (30), playwright (6: mobile + desktop). Визуальная проверка скриншотом выполнена.
 
-## Замечания по шагу 0
-- TypeScript закреплён на `~6.0`: typescript-eslint не поддерживает TS 7. Вернуться к 7, когда будет поддержка (>=7.1).
-- Предупреждение Nuxt «Component directory does not exist: app/components/ui» исчезнет в шаге 1, когда появятся компоненты.
-- Правило FSD в ESLint ловит только явные импорты (`~/components/...`), автоимпортируемые компоненты оно не видит. Это ограничение подхода, нужны ревью-проверки.
-- Правило «типы только в отдельных файлах» запрещает `interface`/`type` везде, кроме `types.ts`, `types/**` и `*.d.ts`. По решению пользователя типы props и локальные типы лежат в `types.ts` рядом с компонентами (в папке слайса). Проверено на тестовых файлах.
-- `/code-review` не запускался: нет коммита и диффа. Ревью шага выполнено вручную по чек-листу `nuxt-review`.
-- В зависимостях есть `@vueuse/core` (нужен компонентам shadcn-vue) и `tw-animate-css` (анимации shadcn).
+## Решения шага 1
+- `Ui*` собраны на нативных элементах с BEM (без обёрток над shadcn), чтобы не дублировать стили. shadcn-vue подключаем позже для сложных компонентов (dialog, select, tabs). Для этого `components.json` уже указывает `ui` → `@/components/ui/shadcn`.
+- Модуль `shadcn-nuxt` и пакет убраны из зависимостей до первого shadcn-компонента (иначе предупреждение про отсутствующую папку). Вернуть вместе с `shadcn: { componentDir: './app/components/ui/shadcn' }`.
+- Иконки: Lucide (`iconLibrary` в `components.json`), пакет пока не установлен; сделаем обёртку `UiIcon`, когда понадобится первая иконка.
+- `ROUTE` лежит в `shared/routes.ts` (не в `shared/utils`), поэтому не автоимпортируется: импорт `#shared/routes`.
+
+## Замечания
+- TypeScript закреплён на `~6.0`: typescript-eslint не поддерживает TS 7.
+- FSD-правило ESLint ловит только явные импорты, автоимпортируемые компоненты не видит: проверять на ревью.
+- `/styleguide` существует только в dev: `config/devPages.ts` (`removeDevOnlyPages`) подключён хуком `pages:extend` в `$production`. Проверено production-сборкой: `/` отдаёт 200, `/styleguide` 404.
+- `tests/unit/ruleset.test.ts` поднимает ESLint (около 3 секунд), это нормально.
 
 ## Следующие шаги
-1. Дизайн-система `Ui*` (BEM), `shared/routes.ts`, тест на имена роутов, добавление shadcn-компонентов через CLI.
-2. Контент: zod-схема, YAML-загрузчик, парсер фуриганы, `<Ruby>`, 3 образцовых пункта.
+2. Контент: zod-схема пункта (`shared/schemas`), YAML-загрузчик, парсер фуриганы, `<Ruby>`, `validate-content`, 3 образцовых пункта.
 3. БД (Drizzle + Neon Pool) и авторизация (nuxt-auth-utils), `security-guidance`.
 4. Урок и упражнения. 5. SRS. 6. Экраны. 7. PWA и деплой. 8. Контент N5 и далее.
 
-## Решения
-- Nuxt 4, pnpm, только тёмная тема, палитра Acid Lime (#0B0B0C / #151517 / #D1FE17 / #F4F4F5 / ошибка #FF5D5D).
-- FSD слоями внутри `app/components/`, страницы тонкие, типы в `types/index.ts`, роуты именованные.
-- SRS: FSRS, Good / Hard / Again по числу ошибок; единица — пункт грамматики.
-- v1 без гостевого режима, офлайн-очереди и lib/ai. Rate limit через Vercel Firewall.
-
 ## На обсуждении / неоднозначное
 - Формат ревью контента (status draft/reviewed + просмотр в приложении) — обсудить до шага 8.
-- Структура по FSD остаётся, пока не мешает. Обязательно: сущности и фичи по логичным папкам, без десятков компонентов в одной папке (решение пользователя).
-- Где держать сырые shadcn-компоненты и наши `Ui*` обёртки внутри слоя `ui/` (подпапки или рядом) — решить в шаге 1.

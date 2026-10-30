@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import { ROUTE } from '#shared/routes';
+
+definePageMeta({ name: ROUTE.home });
+</script>
+
 <template>
-  <main>
-    <h1>Bunpo</h1>
-  </main>
+  <HomePage />
 </template>

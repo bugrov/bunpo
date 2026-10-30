@@ -18,6 +18,7 @@
   --accent: #26262a;
   --accent-foreground: #f4f4f5;
   --destructive: #ff5d5d;
+  --success: #5ee9b5;
   --border: #2a2a2e;
   --input: #2a2a2e;
   --ring: #d1fe17;
@@ -40,6 +41,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-success: var(--success);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);

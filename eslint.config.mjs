@@ -37,6 +37,38 @@ const withoutParser = (configs) => {
   });
 };
 
+const navigateMessage = 'Переходы только по имени роута: navigateTo({ name: ROUTE.xxx }).';
+const typeMessage = 'Типы объявляются только в types.ts или types/index.ts.';
+
+const restrictedSyntax = [
+  {
+    selector: 'TSAsExpression > TSAsExpression > TSUnknownKeyword',
+    message: '`as unknown as` запрещён: исправь типы или обоснуй исключение отдельно.',
+  },
+  {
+    selector: "CallExpression[callee.object.name='sql'][callee.property.name='raw']",
+    message: 'sql.raw запрещён: используй параметризованные запросы Drizzle.',
+  },
+  {
+    selector: "CallExpression[callee.name='navigateTo'] > Literal:first-child",
+    message: navigateMessage,
+  },
+  {
+    selector: "CallExpression[callee.name='navigateTo'] > TemplateLiteral:first-child",
+    message: navigateMessage,
+  },
+  {
+    selector: "CallExpression[callee.name='navigateTo'] > ObjectExpression > Property[key.name='path']",
+    message: navigateMessage,
+  },
+];
+
+// Объявлять типы можно только в types.ts, types/** и *.d.ts: там действует только restrictedSyntax.
+const typeDeclarationBans = [
+  { selector: 'TSInterfaceDeclaration', message: typeMessage },
+  { selector: 'TSTypeAliasDeclaration', message: typeMessage },
+];
+
 export default withNuxt(
   ...withoutParser(tseslint.configs.strictTypeChecked),
   ...withoutParser(tseslint.configs.stylisticTypeChecked),
@@ -62,23 +94,23 @@ export default withNuxt(
         'error',
         { assertionStyle: 'as', objectLiteralTypeAssertions: 'never' },
       ],
-      'no-restricted-syntax': [
+      'no-restricted-syntax': ['error', ...restrictedSyntax, ...typeDeclarationBans],
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'vue/no-restricted-syntax': [
         'error',
         {
-          selector: 'TSAsExpression > TSAsExpression > TSUnknownKeyword',
-          message: '`as unknown as` запрещён: исправь типы или обоснуй исключение отдельно.',
+          selector:
+            'VElement[rawName=/^(NuxtLink|nuxt-link|RouterLink|router-link)$/] > VStartTag > VAttribute[directive=false][key.name="to"]',
+          message: 'Ссылки только по имени роута: :to="{ name: ROUTE.xxx }".',
         },
         {
-          selector: "CallExpression[callee.object.name='sql'][callee.property.name='raw']",
-          message: 'sql.raw запрещён: используй параметризованные запросы Drizzle.',
-        },
-        {
-          selector: 'TSInterfaceDeclaration',
-          message: 'Типы объявляются только в types.ts или types/index.ts.',
-        },
-        {
-          selector: 'TSTypeAliasDeclaration',
-          message: 'Типы объявляются только в types.ts или types/index.ts.',
+          selector:
+            'VElement[rawName=/^(NuxtLink|nuxt-link|RouterLink|router-link)$/] > VStartTag > VAttribute[directive=true][key.argument.name="to"] > VExpressionContainer > :matches(Literal, TemplateLiteral)',
+          message: 'Ссылки только по имени роута: :to="{ name: ROUTE.xxx }".',
         },
       ],
     },
@@ -86,7 +118,7 @@ export default withNuxt(
   ...fsdOverrides,
   {
     files: ['**/types.ts', '**/types/**/*.ts', '**/*.d.ts'],
-    rules: { 'no-restricted-syntax': 'off' },
+    rules: { 'no-restricted-syntax': ['error', ...restrictedSyntax] },
   },
   {
     files: ['**/*.{js,mjs,cjs}'],
