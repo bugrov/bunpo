@@ -18,7 +18,7 @@ const logout = async () => {
       Привет, {{ user?.displayName }}
     </p>
     <UiButton
-      variant="ghost"
+      variant="outline"
       @click="logout"
     >
       Выйти

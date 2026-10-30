@@ -29,6 +29,10 @@ const { variant = 'primary', size = 'md', type = 'button' } = defineProps<UiButt
     @apply bg-secondary text-secondary-foreground hover:bg-accent;
   }
 
+  &--outline {
+    @apply border border-foreground/30 bg-transparent text-foreground hover:border-foreground/60 hover:bg-secondary;
+  }
+
   &--ghost {
     @apply bg-transparent text-foreground hover:bg-secondary;
   }

@@ -18,6 +18,9 @@ const furigana = useFurigana();
         <UiButton variant="secondary">
           Secondary
         </UiButton>
+        <UiButton variant="outline">
+          Outline
+        </UiButton>
         <UiButton variant="ghost">
           Ghost
         </UiButton>
