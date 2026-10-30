@@ -68,6 +68,22 @@
     color: var(--foreground);
   }
 
+  /* Tailwind v4 вернул обычную стрелку кнопкам: возвращаем «руку» всему, что логично нажимается, и запрет у недоступного. */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  a[href],
+  summary,
+  label[for],
+  select:not(:disabled),
+  input:is([type='checkbox'], [type='radio'], [type='submit'], [type='button']):not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
   /* Тонкий скроллбар на всём сайте. Стандартные свойства для Firefox и Chromium, webkit-вариант для старого Safari. */
   * {
     scrollbar-width: thin;
