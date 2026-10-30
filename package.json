@@ -14,13 +14,18 @@
     "lint:style": "stylelint \"app/**/*.{css,scss,vue}\"",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "validate:content": "vitest run tests/unit/content.test.ts tests/unit/grammarSchema.test.ts"
+    "validate:content": "vitest run tests/unit/content.test.ts tests/unit/grammarSchema.test.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
     "@vueuse/core": "^15.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.45.4",
     "nuxt": "^4.6.3",
+    "nuxt-auth-utils": "^0.6.0",
     "reka-ui": "^2.11.0",
     "tailwind-merge": "^3.7.0",
     "vue": "^3.5.44",
@@ -35,6 +40,7 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "@tailwindcss/postcss": "4.3.3",
     "@vue/test-utils": "^2.5.1",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^10.13.0",
     "happy-dom": "^21.0.4",
     "postcss-html": "^2.0.0",

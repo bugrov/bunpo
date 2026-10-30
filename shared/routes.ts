@@ -2,5 +2,8 @@
 // переходы выполняются только по имени: navigateTo({ name: ROUTE.xxx }), <NuxtLink :to="{ name: ROUTE.xxx }">.
 export const ROUTE = {
   home: 'home',
+  login: 'login',
+  register: 'register',
+  today: 'today',
   styleguide: 'styleguide',
 } as const;

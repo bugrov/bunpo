@@ -9,7 +9,10 @@ const cssEntry = fileURLToPath(new URL('./app/assets/css/main.css', import.meta.
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', 'nuxt-auth-utils'],
+  // Всё приложение это SPA: в HTML нет персональных данных. Лендинг тоже клиентский (поисковикам сайт закрыт через robots.txt).
+  ssr: false,
+  runtimeConfig: { databaseUrl: '' },
   css: ['~/assets/css/main.css'],
   vite: {
     // Дописывает @reference в стили компонентов до того, как Sass и Tailwind их обработают.
@@ -40,7 +43,7 @@ export default defineNuxtConfig({
     strict: true,
     // Тесты и конфиги тестов проверяются вместе с остальным кодом (и видны ESLint).
     nodeTsConfig: {
-      include: ['../tests/**/*', '../config/**/*', '../vitest.config.ts', '../playwright.config.ts'],
+      include: ['../tests/**/*', '../config/**/*', '../drizzle.config.ts', '../vitest.config.ts', '../playwright.config.ts'],
     },
   },
 });

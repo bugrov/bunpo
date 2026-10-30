@@ -1,5 +1,12 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Переменные из .env нужны e2e-тестам с базой; в CI файла нет, тогда такие тесты пропускаются.
+try {
+  process.loadEnvFile('.env');
+} catch {
+  // .env отсутствует
+}
+
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
