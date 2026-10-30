@@ -1,0 +1,10 @@
+{
+  "enabledPlugins": {
+    "neon@claude-plugins-official": false,
+    "nuxt-v4@claude-skills": true,
+    "pinia-v3@claude-skills": true,
+    "rest-api-design@claude-skills": true,
+    "api-design-principles@claude-skills": true,
+    "api-security-hardening@claude-skills": true
+  }
+}
