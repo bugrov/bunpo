@@ -46,6 +46,12 @@ describe('защита API', () => {
     }
   });
 
+  it('кэшируемые обработчики задают свой getKey, не зависящий от строки запроса', () => {
+    for (const file of CACHED_ENDPOINTS) {
+      expect(source(file), `${file}: нужен getKey (иначе ключ кэша включает query и растёт от ?x=1, ?x=2)`).toContain('getKey:');
+    }
+  });
+
   it('тело мутирующих запросов читается только как JSON через readValidatedJsonBody', () => {
     const mutating = files.filter((file) => /\.(post|put|patch|delete)\.ts$/.test(file));
 

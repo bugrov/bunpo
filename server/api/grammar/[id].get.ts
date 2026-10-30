@@ -12,5 +12,12 @@ export default defineCachedEventHandler(
 
     return point;
   },
-  { maxAge: 60 * 60, swr: true, shouldBypassCache: () => import.meta.dev },
+  {
+    maxAge: 60 * 60,
+    swr: true,
+    // Ключ только из id, без строки запроса. Nitro вырезает из ключа всё кроме букв, цифр и _, поэтому дефис
+    // заменяем на _: иначе n5-ab-c и n5-a-bc дали бы один ключ. Неизвестный id кидает 404, ошибки в кэш не попадают.
+    getKey: (event) => `grammar_${(getRouterParam(event, 'id') ?? '').replaceAll('-', '_')}`,
+    shouldBypassCache: () => import.meta.dev,
+  },
 );
