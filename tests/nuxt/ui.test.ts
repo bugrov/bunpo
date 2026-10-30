@@ -1,6 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
-import { UiBadge, UiButton, UiCard, UiField, UiInput, UiLabel } from '#components';
+import { UiBadge, UiButton, UiCard, UiField, UiInput, UiLabel, UiRuby } from '#components';
+import { useFurigana } from '~/composables/useFurigana';
 
 describe('UiButton', () => {
   it('рендерит слот и по умолчанию primary / md / type=button', async () => {
@@ -107,6 +108,29 @@ describe('UiCard', () => {
 
     expect(full.get('.ui-card__header').text()).toBe('Шапка');
     expect(full.get('.ui-card__footer').text()).toBe('Низ');
+  });
+});
+
+describe('UiRuby', () => {
+  const text = 'わたしは{学生|がくせい}です。';
+
+  it('показывает чтения над кандзи, когда фуригана включена', async () => {
+    useFurigana().value = true;
+    const wrapper = await mountSuspended(UiRuby, { props: { text } });
+
+    expect(wrapper.attributes('lang')).toBe('ja');
+    expect(wrapper.get('ruby').text()).toContain('学生');
+    expect(wrapper.get('rt').text()).toBe('がくせい');
+    expect(wrapper.findAll('rp').map((rp) => rp.text())).toEqual(['(', ')']);
+    expect(wrapper.text()).toContain('わたしは');
+  });
+
+  it('скрывает чтения, когда фуригана выключена, и оставляет текст', async () => {
+    useFurigana().value = false;
+    const wrapper = await mountSuspended(UiRuby, { props: { text } });
+
+    expect(wrapper.find('rt').exists()).toBe(false);
+    expect(wrapper.text()).toBe('わたしは学生です。');
   });
 });
 

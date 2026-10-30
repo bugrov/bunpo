@@ -27,6 +27,10 @@ export default defineNuxtConfig({
     },
   },
   components: [{ path: '~/components', pathPrefix: false, extensions: ['vue'] }],
+  nitro: {
+    // Контент грамматики читается сервером через useStorage('assets:content').
+    serverAssets: [{ baseName: 'content', dir: fileURLToPath(new URL('./content', import.meta.url)) }],
+  },
   $production: {
     hooks: {
       'pages:extend': removeDevOnlyPages,

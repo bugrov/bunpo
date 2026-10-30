@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const name = ref('');
+const furigana = useFurigana();
 </script>
 
 <template>
@@ -78,6 +79,23 @@ const name = ref('');
 
     <UiCard>
       <template #header>
+        Фуригана
+      </template>
+      <div class="styleguide-page__column">
+        <p class="styleguide-page__japanese">
+          <UiRuby text="{田中|たなか}さんは{先生|せんせい}です。" />
+        </p>
+        <UiButton
+          variant="secondary"
+          @click="furigana = !furigana"
+        >
+          {{ furigana ? 'Скрыть фуригану' : 'Показать фуригану' }}
+        </UiButton>
+      </div>
+    </UiCard>
+
+    <UiCard>
+      <template #header>
         Бейджи
       </template>
       <div class="styleguide-page__row">
@@ -109,6 +127,10 @@ const name = ref('');
 
   &__row {
     @apply flex flex-wrap items-center gap-3 py-2;
+  }
+
+  &__japanese {
+    @apply text-2xl;
   }
 
   &__column {
