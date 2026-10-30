@@ -9,18 +9,16 @@
   </main>
 </template>
 
-<style scoped>
-@reference "../../assets/css/main.css";
-
+<style lang="scss" scoped>
 .home-page {
-  @apply mx-auto flex min-h-dvh max-w-xl flex-col justify-center gap-3 px-4;
-}
+  @apply mx-auto flex min-h-dvh max-w-xl flex-col justify-center gap-3 px-4 md:px-8 lg:max-w-2xl lg:px-12;
 
-.home-page__title {
-  @apply text-5xl font-extrabold tracking-tight text-primary;
-}
+  &__title {
+    @apply text-5xl font-extrabold tracking-tight text-primary;
+  }
 
-.home-page__lead {
-  @apply text-lg text-muted-foreground;
+  &__lead {
+    @apply text-lg text-muted-foreground;
+  }
 }
 </style>

@@ -46,18 +46,16 @@ const describedBy = computed(() => {
   </div>
 </template>
 
-<style scoped>
-@reference "../../assets/css/main.css";
-
+<style lang="scss" scoped>
 .ui-field {
   @apply flex flex-col gap-2;
-}
 
-.ui-field__hint {
-  @apply text-sm text-muted-foreground;
-}
+  &__hint {
+    @apply text-sm text-muted-foreground;
+  }
 
-.ui-field__error {
-  @apply text-sm text-destructive;
+  &__error {
+    @apply text-sm text-destructive;
+  }
 }
 </style>

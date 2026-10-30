@@ -4,9 +4,7 @@
   </label>
 </template>
 
-<style scoped>
-@reference "../../assets/css/main.css";
-
+<style lang="scss" scoped>
 .ui-label {
   @apply text-sm font-medium text-foreground;
 }

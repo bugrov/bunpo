@@ -13,26 +13,24 @@ const { variant = 'neutral' } = defineProps<UiBadgeProps>();
   </span>
 </template>
 
-<style scoped>
-@reference "../../assets/css/main.css";
-
+<style lang="scss" scoped>
 .ui-badge {
   @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
-}
 
-.ui-badge--neutral {
-  @apply bg-secondary text-secondary-foreground;
-}
+  &--neutral {
+    @apply bg-secondary text-secondary-foreground;
+  }
 
-.ui-badge--accent {
-  @apply bg-primary text-primary-foreground;
-}
+  &--accent {
+    @apply bg-primary text-primary-foreground;
+  }
 
-.ui-badge--success {
-  @apply bg-success/15 text-success;
-}
+  &--success {
+    @apply bg-success/15 text-success;
+  }
 
-.ui-badge--danger {
-  @apply bg-destructive/15 text-destructive;
+  &--danger {
+    @apply bg-destructive/15 text-destructive;
+  }
 }
 </style>

@@ -72,3 +72,19 @@ describe('ESLint запрещает строковые пути в перехо�
     expect(rules).not.toContain('vue/no-restricted-syntax');
   });
 });
+
+describe('ESLint требует семантические теги для кликов', () => {
+  it('обработчик click на div запрещён', async () => {
+    const code = '<template>\n  <div @click="go">x</div>\n</template>\n';
+    const rules = await lint(code, 'app/components/widgets/Bad.vue');
+
+    expect(rules).toContain('vue/no-restricted-syntax');
+  });
+
+  it('обработчик click на button разрешён', async () => {
+    const code = '<template>\n  <button type="button" @click="go">x</button>\n</template>\n';
+    const rules = await lint(code, 'app/components/widgets/Good.vue');
+
+    expect(rules).not.toContain('vue/no-restricted-syntax');
+  });
+});

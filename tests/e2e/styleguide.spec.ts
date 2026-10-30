@@ -18,3 +18,12 @@ test('на мобильной ширине нет горизонтальной �
 
   expect(overflow).toBeLessThanOrEqual(0);
 });
+
+test('стили из @apply применяются к компонентам', async ({ page }) => {
+  await page.goto('/styleguide');
+
+  const button = page.getByRole('button', { name: 'Primary' });
+
+  await expect(button).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  await expect(button).not.toHaveCSS('border-radius', '0px');
+});

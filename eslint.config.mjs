@@ -112,6 +112,11 @@ export default withNuxt(
             'VElement[rawName=/^(NuxtLink|nuxt-link|RouterLink|router-link)$/] > VStartTag > VAttribute[directive=true][key.argument.name="to"] > VExpressionContainer > :matches(Literal, TemplateLiteral)',
           message: 'Ссылки только по имени роута: :to="{ name: ROUTE.xxx }".',
         },
+        {
+          selector:
+            'VElement[rawName=/^(div|span|p|li|ul|ol|section|article|header|footer|main|aside|nav|img|h[1-6])$/] > VStartTag > VAttribute[directive=true][key.argument.name=/^(click|dblclick|mousedown|mouseup|pointerdown|pointerup)$/]',
+          message: 'Кликабельный элемент должен быть семантическим: <button> для действий, <a>/<NuxtLink> для переходов.',
+        },
       ],
     },
   },

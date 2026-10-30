@@ -18,22 +18,20 @@
   </section>
 </template>
 
-<style scoped>
-@reference "../../assets/css/main.css";
-
+<style lang="scss" scoped>
 .ui-card {
-  @apply flex flex-col overflow-hidden rounded-2xl border border-border bg-card text-card-foreground;
-}
+  @apply flex flex-col overflow-hidden rounded-2xl border bg-card text-card-foreground;
 
-.ui-card__header {
-  @apply border-b border-border px-5 py-4 font-semibold;
-}
+  &__header {
+    @apply border-b px-5 py-4 font-semibold;
+  }
 
-.ui-card__body {
-  @apply px-5 py-4;
-}
+  &__body {
+    @apply px-5 py-4;
+  }
 
-.ui-card__footer {
-  @apply border-t border-border px-5 py-4;
+  &__footer {
+    @apply border-t px-5 py-4;
+  }
 }
 </style>

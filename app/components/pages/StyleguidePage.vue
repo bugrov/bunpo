@@ -99,22 +99,20 @@ const name = ref('');
   </main>
 </template>
 
-<style scoped>
-@reference "../../assets/css/main.css";
-
+<style lang="scss" scoped>
 .styleguide-page {
   @apply mx-auto flex max-w-2xl flex-col gap-6 px-4 py-8;
-}
 
-.styleguide-page__title {
-  @apply text-3xl font-extrabold tracking-tight;
-}
+  &__title {
+    @apply text-3xl font-extrabold tracking-tight;
+  }
 
-.styleguide-page__row {
-  @apply flex flex-wrap items-center gap-3 py-2;
-}
+  &__row {
+    @apply flex flex-wrap items-center gap-3 py-2;
+  }
 
-.styleguide-page__column {
-  @apply flex flex-col gap-4;
+  &__column {
+    @apply flex flex-col gap-4;
+  }
 }
 </style>
