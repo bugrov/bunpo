@@ -1,0 +1,300 @@
+# Перечень всех запланированных тем грамматики. Это единая точка правды о том, ЧТО мы пишем и В КАКОМ ПОРЯДКЕ.
+#
+# - Порядок записей = рекомендуемый порядок изучения (сначала N5, затем разговорная речь N5, N4, разговорная речь N4–N3).
+# - status: planned (файла ещё нет), draft (файл в content/grammar/<level>/<id>.yaml написан, не проверен), reviewed (проверен пользователем).
+# - Для draft и reviewed поля level, register и status обязаны совпадать с файлом пункта. Это проверяет tests/unit/curriculum.test.ts.
+# - prerequisites: id пунктов, которые нужно знать раньше; они должны стоять в списке выше.
+# - Темы составлены по ориентирам из оглавлений (Первова, Тае Ким, Genki, списки JLPT) и своим знаниям; названия и разбивка авторские.
+# - N3 и выше добавим отдельным этапом. Пока здесь только N5, N4 и разговорный трек.
+
+entries:
+  # ───────────── N5: копула и вопросы ─────────────
+  - { id: n5-wa-desu, title: "AはBです", level: n5, register: polite, group: "Копула и вопросы", status: draft }
+  - { id: n5-copula-negative-past, title: "〜じゃないです / 〜でした / 〜じゃなかったです", level: n5, register: polite, group: "Копула и вопросы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-ka-question, title: "Вопросительная частица か", level: n5, register: polite, group: "Копула и вопросы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-alternative-question, title: "Альтернативный вопрос «AですかBですか»", level: n5, register: polite, group: "Копула и вопросы", prerequisites: [n5-ka-question], status: planned }
+  - { id: n5-speech-styles, title: "Стили речи: простой, вежливый, кэйго", level: n5, register: neutral, group: "Копула и вопросы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-set-phrases, title: "Приветствия и устойчивые вежливые фразы (いただきます, ただいま)", level: n5, register: polite, group: "Копула и вопросы", status: planned }
+  - { id: n5-question-words, title: "Вопросительные слова (何・誰・いつ・どこ・どうして)", level: n5, register: polite, group: "Копула и вопросы", prerequisites: [n5-ka-question], status: planned }
+  - { id: n5-address-forms, title: "Обращение: местоимения и суффиксы さん・くん・ちゃん", level: n5, register: neutral, group: "Копула и вопросы", prerequisites: [n5-wa-desu], status: planned }
+
+  # ───────────── N5: указательные слова ─────────────
+  - { id: n5-kore-sore-are, title: "これ・それ・あれ・どれ", level: n5, register: neutral, group: "Указательные слова", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-kono-sono-ano, title: "この・その・あの・どの", level: n5, register: neutral, group: "Указательные слова", prerequisites: [n5-kore-sore-are], status: planned }
+  - { id: n5-koko-soko-asoko, title: "ここ・そこ・あそこ・どこ", level: n5, register: neutral, group: "Указательные слова", prerequisites: [n5-kore-sore-are], status: planned }
+  - { id: n5-kochira-sochira, title: "こちら・そちら・あちら・どちら", level: n5, register: polite, group: "Указательные слова", prerequisites: [n5-koko-soko-asoko], status: planned }
+  - { id: n5-indefinite-pronouns, title: "誰か・誰も・誰でも (неопределённые, отрицательные, обобщающие)", level: n5, register: neutral, group: "Указательные слова", prerequisites: [n5-question-words], status: planned }
+
+  # ───────────── N5: частицы ─────────────
+  - { id: n5-wa-vs-ga, title: "Различие は и が", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-particle-mo, title: "も «тоже»", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-particle-no, title: "Притяжательная и определяющая の", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-no-pronoun, title: "の вместо существительного (私のです)", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-particle-no], status: planned }
+  - { id: n5-arimasu-imasu, title: "あります・います (есть, находится)", level: n5, register: polite, group: "Частицы", prerequisites: [n5-wa-vs-ga], status: planned }
+  - { id: n5-spatial-words, title: "Слова места: 上・下・前・後ろ・中・隣", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-arimasu-imasu, n5-particle-no], status: planned }
+  - { id: n5-ni-time, title: "に со временем", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-particle-wo, title: "を (прямое дополнение)", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-wo-kudasai, title: "〜をください (дайте, пожалуйста)", level: n5, register: polite, group: "Частицы", prerequisites: [n5-particle-wo], status: planned }
+  - { id: n5-word-order, title: "Порядок слов и свобода перестановки частиц", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-particle-wo, n5-wa-vs-ga], status: planned }
+  - { id: n5-ellipsis, title: "Опущение подлежащего и контекст", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-word-order], status: planned }
+  - { id: n5-particle-de-place, title: "で: место действия", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-particle-wo], status: planned }
+  - { id: n5-particle-de-means, title: "で: орудие и транспорт", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-particle-de-place], status: planned }
+  - { id: n5-particle-to, title: "と «вместе с» и «и»", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-ya-toka, title: "や・とか (неполное перечисление)", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-particle-to], status: planned }
+  - { id: n5-kara-made, title: "から・まで (от и до)", level: n5, register: neutral, group: "Частицы", prerequisites: [n5-ni-time], status: planned }
+  - { id: n5-particle-ga-but, title: "が «но, а»", level: n5, register: polite, group: "Частицы", prerequisites: [n5-wa-vs-ga], status: planned }
+  - { id: n5-yo-ne, title: "Заключительные частицы よ и ね", level: n5, register: polite, group: "Частицы", prerequisites: [n5-ka-question], status: planned }
+  - { id: n5-o-go-prefix, title: "Вежливые префиксы お и ご", level: n5, register: polite, group: "Частицы", prerequisites: [n5-speech-styles], status: planned }
+
+  # ───────────── N5: глаголы, формы ます ─────────────
+  - { id: n5-verb-groups, title: "Группы глаголов и основы", level: n5, register: neutral, group: "Глаголы: формы", prerequisites: [n5-particle-wo], status: planned }
+  - { id: n5-masu-form, title: "Вежливая форма 〜ます", level: n5, register: polite, group: "Глаголы: формы", prerequisites: [n5-verb-groups], status: planned }
+  - { id: n5-masu-negative-past, title: "〜ません・〜ました・〜ませんでした", level: n5, register: polite, group: "Глаголы: формы", prerequisites: [n5-masu-form], status: planned }
+  - { id: n5-mou-mada, title: "もう〜ました / まだ〜ていません (уже и ещё не)", level: n5, register: polite, group: "Глаголы: формы", prerequisites: [n5-masu-negative-past], status: planned }
+  - { id: n5-ni-motion, title: "へ и に с глаголами движения", level: n5, register: neutral, group: "Глаголы: формы", prerequisites: [n5-masu-form], status: planned }
+  - { id: n5-motion-purpose, title: "Цель движения: 〜に行く / 来る", level: n5, register: neutral, group: "Глаголы: формы", prerequisites: [n5-ni-motion], status: planned }
+  - { id: n5-wo-motion, title: "を с глаголами движения (道を歩く)", level: n5, register: neutral, group: "Глаголы: формы", prerequisites: [n5-ni-motion], status: planned }
+  - { id: n5-masen-ka, title: "〜ませんか (приглашение)", level: n5, register: polite, group: "Желание и приглашение", prerequisites: [n5-masu-form], status: planned }
+  - { id: n5-mashou, title: "〜ましょう (давайте)", level: n5, register: polite, group: "Желание и приглашение", prerequisites: [n5-masu-form], status: planned }
+  - { id: n5-mashouka, title: "〜ましょうか (предложение помощи)", level: n5, register: polite, group: "Желание и приглашение", prerequisites: [n5-mashou], status: planned }
+  - { id: n5-tai, title: "〜たい (желание)", level: n5, register: neutral, group: "Желание и приглашение", prerequisites: [n5-masu-form], status: planned }
+  - { id: n5-ga-hoshii, title: "〜が欲しい (хочу что-то)", level: n5, register: neutral, group: "Желание и приглашение", prerequisites: [n5-wa-vs-ga], status: planned }
+
+  # ───────────── N5: прилагательные ─────────────
+  - { id: n5-i-adjectives, title: "い-прилагательные", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-na-adjectives, title: "な-прилагательные", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-wa-desu], status: planned }
+  - { id: n5-adjective-conjugation, title: "Спряжение прилагательных: отрицание и прошедшее (い и な)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-i-adjectives, n5-na-adjectives], status: planned }
+  - { id: n5-ii-yoi, title: "いい / よい (неправильное прилагательное)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-adjective-conjugation], status: planned }
+  - { id: n5-totemo-amari, title: "とても・あまり (степень)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-i-adjectives, n5-na-adjectives], status: planned }
+  - { id: n5-degree-adverbs, title: "Наречия степени: すこし・たくさん・もっと・ずっと", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-totemo-amari], status: planned }
+  - { id: n5-comparison, title: "Сравнение: AはBより〜 / AのほうがBより〜", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-i-adjectives, n5-na-adjectives], status: planned }
+  - { id: n5-superlative, title: "Превосходная степень: 一番", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-comparison], status: planned }
+  - { id: n5-onaji-gurai, title: "同じ・〜と同じ・〜ぐらい (равенство)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-comparison], status: planned }
+  - { id: n5-adverb-form, title: "Наречная форма: 〜く / 〜に", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-i-adjectives, n5-na-adjectives], status: planned }
+  - { id: n5-suki-kirai, title: "〜が好き / 嫌い / 上手 / 下手", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-wa-vs-ga, n5-na-adjectives], status: planned }
+  - { id: n5-ga-description, title: "Описание через が: 髪が長い", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-wa-vs-ga, n5-i-adjectives], status: planned }
+  - { id: n5-possession-ga, title: "Обладание: AはBがあります", level: n5, register: polite, group: "Прилагательные", prerequisites: [n5-arimasu-imasu], status: planned }
+  - { id: n5-naru, title: "〜になる・〜くなる (становиться)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-adverb-form], status: planned }
+  - { id: n5-suru-ni, title: "〜にする・〜くする (делать, выбирать)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-naru], status: planned }
+  - { id: n5-yasui-nikui, title: "〜やすい・〜にくい", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-masu-form, n5-i-adjectives], status: planned }
+  - { id: n5-sugiru, title: "〜すぎる (слишком)", level: n5, register: neutral, group: "Прилагательные", prerequisites: [n5-masu-form, n5-i-adjectives, n5-na-adjectives], status: planned }
+
+  # ───────────── N5: форма て ─────────────
+  - { id: n5-te-form, title: "Форма て / で", level: n5, register: neutral, group: "Форма て", prerequisites: [n5-verb-groups], status: planned }
+  - { id: n5-te-connect, title: "Соединение действий через て", level: n5, register: neutral, group: "Форма て", prerequisites: [n5-te-form], status: planned }
+  - { id: n5-te-adj-noun, title: "Соединение прилагательных и существительных (〜くて, 〜で)", level: n5, register: neutral, group: "Форма て", prerequisites: [n5-te-connect, n5-i-adjectives, n5-na-adjectives], status: planned }
+  - { id: n5-te-kudasai, title: "〜てください", level: n5, register: polite, group: "Форма て", status: draft }
+  - { id: n5-te-imasu-progress, title: "〜ています: действие в процессе", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-form], status: planned }
+  - { id: n5-te-imasu-state, title: "〜ています: состояние и результат", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-imasu-progress], status: planned }
+  - { id: n5-te-imasu-habit, title: "〜ています: занятия и привычки", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-imasu-progress], status: planned }
+  - { id: n5-te-mo-ii, title: "〜てもいいです (можно)", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-form], status: planned }
+  - { id: n5-te-wa-ikemasen, title: "〜てはいけません (нельзя)", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-mo-ii], status: planned }
+  - { id: n5-te-sumimasen, title: "〜てすみません (простите, что…)", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-form], status: planned }
+  - { id: n5-te-kara, title: "〜てから (после того как)", level: n5, register: neutral, group: "Форма て", prerequisites: [n5-te-form], status: planned }
+  - { id: n5-mada-te-imasen, title: "まだ〜ていません (ещё не)", level: n5, register: polite, group: "Форма て", prerequisites: [n5-te-imasu-progress], status: planned }
+
+  # ───────────── N5: простая форма и её конструкции ─────────────
+  - { id: n5-plain-form-present, title: "Простая форма: словарная и 〜ない", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-verb-groups, n5-masu-form], status: planned }
+  - { id: n5-plain-form-past, title: "Простая форма прошедшего: 〜た・〜なかった", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-present, n5-te-form], status: planned }
+  - { id: n5-nai-de, title: "〜ないで (не делая)", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n5-nai-de-kudasai, title: "〜ないでください (не делайте)", level: n5, register: polite, group: "Простая форма", prerequisites: [n5-nai-de, n5-te-kudasai], status: planned }
+  - { id: n5-nakereba-narimasen, title: "〜なければなりません (надо)", level: n5, register: polite, group: "Простая форма", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n5-nakute-mo-ii, title: "〜なくてもいいです (можно не)", level: n5, register: polite, group: "Простая форма", prerequisites: [n5-plain-form-present, n5-te-mo-ii], status: planned }
+  - { id: n5-ta-koto-ga-aru, title: "〜たことがあります (был опыт)", level: n5, register: polite, group: "Простая форма", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n5-tari-tari, title: "〜たり〜たりする (перечисление действий)", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n5-ta-hou-ga-ii, title: "〜たほうがいい・〜ないほうがいい (совет)", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-past, n5-plain-form-present], status: planned }
+  - { id: n5-tsumori, title: "〜つもり (намерение)", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n5-nagara, title: "〜ながら (одновременность)", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-masu-form], status: planned }
+  - { id: n5-mae-ni-ato-de, title: "〜前に・〜後で (до и после)", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-present, n5-plain-form-past], status: planned }
+  - { id: n5-toki, title: "〜とき «когда»", level: n5, register: neutral, group: "Простая форма", prerequisites: [n5-plain-form-present, n5-plain-form-past], status: planned }
+  - { id: n5-kara-reason, title: "〜から (причина)", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n5-node, title: "〜ので (причина)", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-kara-reason], status: planned }
+  - { id: n5-conjunctions, title: "Союзы между предложениями: そして・それから・でも・だから・しかし", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-kara-reason], status: planned }
+  - { id: n5-verb-modifier, title: "Определительные придаточные: глагол + существительное", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n5-no-nominalizer, title: "Субстантиватор の", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n5-no-ga-suki, title: "Глагол + のが好き / 上手", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-suki-kirai, n5-plain-form-present], status: planned }
+  - { id: n5-to-iu, title: "〜という (под названием)", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-particle-no], status: planned }
+  - { id: n5-giving-verbs, title: "あげる・くれる・もらう", level: n5, register: neutral, group: "Союзы и придаточные", prerequisites: [n5-particle-wo], status: planned }
+
+  # ───────────── N5: мнение и предположение ─────────────
+  - { id: n5-to-omoimasu, title: "〜と思います (думаю, что…)", level: n5, register: polite, group: "Мнение и предположение", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n5-to-itte-imashita, title: "〜と言っていました (сказал, что…)", level: n5, register: polite, group: "Мнение и предположение", prerequisites: [n5-to-omoimasu, n5-te-imasu-progress], status: planned }
+  - { id: n5-deshou, title: "〜でしょう (вероятно)", level: n5, register: polite, group: "Мнение и предположение", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n5-kamoshiremasen, title: "〜かもしれません (возможно)", level: n5, register: polite, group: "Мнение и предположение", prerequisites: [n5-deshou], status: planned }
+
+  # ───────────── N5: числа и счёт ─────────────
+  - { id: n5-numbers, title: "Числа: 0–10 000 и особые чтения", level: n5, register: neutral, group: "Числа и счёт", status: planned }
+  - { id: n5-counting-systems, title: "Счёт: японский (ひとつ) и китайский (いち)", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-numbers], status: planned }
+  - { id: n5-counters, title: "Счётные суффиксы: 本・枚・台・人・個・歳", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counting-systems], status: planned }
+  - { id: n5-ordinals, title: "Порядковые числительные: 〜番目・〜つ目・〜階", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters], status: planned }
+  - { id: n5-counter-word-order, title: "Порядок слов со счётными словами", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters, n5-particle-wo], status: planned }
+  - { id: n5-dates, title: "Дни, месяцы, годы", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counting-systems], status: planned }
+  - { id: n5-telling-time, title: "Время: 〜時〜分, полдень, полночь", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-numbers, n5-ni-time], status: planned }
+  - { id: n5-duration, title: "Длительность: 〜時間・〜日・〜か月・〜年", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters, n5-telling-time], status: planned }
+  - { id: n5-frequency-kan-ni, title: "Частота: 〜間に〜回", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters, n5-dates], status: planned }
+  - { id: n5-de-quantity, title: "で с количеством: 二人で, 100円で", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-particle-de-means, n5-counters], status: planned }
+  - { id: n5-mo-counts, title: "も со счётом (целых…)", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-particle-mo, n5-counters], status: planned }
+  - { id: n5-shika, title: "しか〜ない (только)", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters, n5-plain-form-present], status: planned }
+  - { id: n5-dake, title: "だけ (только)", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters], status: planned }
+  - { id: n5-goro-gurai, title: "ごろ・ぐらい (примерно)", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-counters, n5-dates], status: planned }
+  - { id: n5-chuu, title: "Суффикс 〜中", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-dates], status: planned }
+  - { id: n5-frequency-adverbs, title: "Наречия частоты: いつも・よく・ときどき", level: n5, register: neutral, group: "Числа и счёт", prerequisites: [n5-masu-form], status: planned }
+
+  # ───────────── N5: разговорная речь (трек casual) ─────────────
+  - { id: n5-casual-da, title: "Разговорная связка だ и 〜だよ / 〜じゃない", level: n5, register: casual, group: "Разговорная речь", prerequisites: [n5-wa-desu, n5-plain-form-present], status: planned }
+  - { id: n5-casual-question, title: "Вопрос без か: интонация и 〜の？", level: n5, register: casual, group: "Разговорная речь", prerequisites: [n5-ka-question, n5-plain-form-present], status: planned }
+  - { id: n5-casual-teru, title: "〜てる (сокращение 〜ている)", level: n5, register: casual, group: "Разговорная речь", prerequisites: [n5-te-imasu-progress, n5-plain-form-present], status: planned }
+  - { id: n5-casual-contractions, title: "Сокращения в быстрой речи: では→じゃ, には→にゃ", level: n5, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da], status: planned }
+  - { id: n5-casual-kedo, title: "けど / けれど (мягкое «но»)", level: n5, register: casual, group: "Разговорная речь", prerequisites: [n5-particle-ga-but, n5-plain-form-present], status: planned }
+  - { id: n5-casual-reactions, title: "Реакции и согласие: うん・ううん・そう・へえ・まじ？", level: n5, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da], status: planned }
+
+  # ───────────── N4: бенефактивы и вспомогательные конструкции ─────────────
+  - { id: n4-te-ageru, title: "〜てあげる (сделать для кого-то)", level: n4, register: neutral, group: "Бенефактивы", prerequisites: [n5-giving-verbs, n5-te-form], status: planned }
+  - { id: n4-te-kureru, title: "〜てくれる (сделали для меня)", level: n4, register: neutral, group: "Бенефактивы", prerequisites: [n4-te-ageru], status: planned }
+  - { id: n4-te-morau, title: "〜てもらう (мне сделали по просьбе)", level: n4, register: neutral, group: "Бенефактивы", prerequisites: [n4-te-kureru], status: planned }
+  - { id: n4-te-moraemasenka, title: "〜てもらえませんか / 〜ていただけませんか (вежливая просьба)", level: n4, register: polite, group: "Бенефактивы", prerequisites: [n4-te-morau, n5-te-kudasai], status: planned }
+  - { id: n4-te-arigatou, title: "〜てありがとう (спасибо за…)", level: n4, register: neutral, group: "Бенефактивы", prerequisites: [n4-te-kureru], status: planned }
+  - { id: n4-te-hoshii, title: "〜てほしい・〜ないでほしい (хочу, чтобы)", level: n4, register: neutral, group: "Бенефактивы", prerequisites: [n5-ga-hoshii, n5-nai-de], status: planned }
+  - { id: n4-te-shimau, title: "〜てしまう (завершить, к сожалению)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-te-oku, title: "〜ておく (заранее)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-te-miru, title: "〜てみる (попробовать)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-transitive-intransitive, title: "Переходные и непереходные глаголы", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-imasu-state], status: planned }
+  - { id: n4-te-aru, title: "〜てある (состояние после действия)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-imasu-state, n4-transitive-intransitive], status: planned }
+  - { id: n4-te-kuru, title: "〜てくる (стало, пришёл делая)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-te-iku, title: "〜ていく (будет становиться, уйти делая)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n4-te-kuru], status: planned }
+  - { id: n4-te-hajimete, title: "〜てはじめて (только когда…)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-te-yokatta, title: "〜てよかった (хорошо, что…)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-hajimeru-tsuzukeru-owaru, title: "〜はじめる・〜つづける・〜おわる", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n5-masu-form], status: planned }
+  - { id: n4-dasu, title: "〜出す (внезапно начать)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n4-hajimeru-tsuzukeru-owaru], status: planned }
+  - { id: n4-kakeru, title: "〜かける・〜込む (начатое, вовнутрь)", level: n4, register: neutral, group: "Вспомогательные глаголы", prerequisites: [n4-hajimeru-tsuzukeru-owaru], status: planned }
+  - { id: n4-te-reason, title: "〜て / 〜で как причина", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-te-adj-noun], status: planned }
+
+  # ───────────── N4: потенциал, волитив, способ ─────────────
+  - { id: n4-potential, title: "Потенциальная форма (〜れる / 〜られる)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-koto-nominalizer, title: "Субстантиватор こと (趣味は〜ことです)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-no-nominalizer, n5-plain-form-present], status: planned }
+  - { id: n4-koto-ga-dekiru, title: "〜ことができる (мочь, уметь)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-plain-form-present, n5-no-nominalizer], status: planned }
+  - { id: n4-volitional, title: "Волитивная форма 〜よう / 〜おう", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-plain-form-present, n5-mashou], status: planned }
+  - { id: n4-volitional-to-omotteiru, title: "Волитив + と思っている (собираюсь)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n4-volitional, n5-to-omoimasu], status: planned }
+  - { id: n4-yotei, title: "〜予定 (планы)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-tsumori], status: planned }
+  - { id: n4-you-to-suru, title: "〜(よ)うとする (пытаться, собираться)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n4-volitional], status: planned }
+  - { id: n4-kata, title: "〜方 (способ действия)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-masu-form], status: planned }
+  - { id: n4-nasai, title: "〜なさい (мягкий приказ)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-masu-form], status: planned }
+  - { id: n4-koto-ni-suru, title: "〜ことにする (решить)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-plain-form-present, n5-no-nominalizer], status: planned }
+  - { id: n4-koto-ni-naru, title: "〜ことになる (решено, получилось так)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n4-koto-ni-suru], status: planned }
+  - { id: n4-koto-ga-aru, title: "〜ことがある (бывает, что)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n5-ta-koto-ga-aru], status: planned }
+  - { id: n4-you-ni-suru, title: "〜ようにする (стараться)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n4-koto-ni-suru], status: planned }
+  - { id: n4-you-ni-naru, title: "〜ようになる (стал делать, научился)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n4-you-ni-suru, n4-potential], status: planned }
+  - { id: n4-you-ni-iu, title: "〜ようにいう (сказать, чтобы)", level: n4, register: neutral, group: "Потенциал и волитив", prerequisites: [n4-you-ni-suru], status: planned }
+
+  # ───────────── N4: причина, цель, уступка ─────────────
+  - { id: n4-tame-ni, title: "〜ために (цель)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-noni-purpose, title: "〜のに (для того, чтобы)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n4-tame-ni, n5-no-nominalizer], status: planned }
+  - { id: n4-you-ni-purpose, title: "〜ように (чтобы)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n4-tame-ni, n4-potential], status: planned }
+  - { id: n4-temo, title: "〜ても / 〜でも (даже если)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-te-form], status: planned }
+  - { id: n4-noni-concession, title: "〜のに (хотя)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-plain-form-present, n5-node], status: planned }
+  - { id: n4-seide, title: "〜せいで (из-за, по вине)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-node], status: planned }
+  - { id: n4-okage-de, title: "〜おかげで (благодаря)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n4-seide], status: planned }
+  - { id: n4-shi-shi, title: "〜し〜し (перечисление причин)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-plain-form-present, n5-kara-reason], status: planned }
+  - { id: n4-n-desu, title: "〜んです (объяснение, «дело в том, что»)", level: n4, register: polite, group: "Причина и цель", prerequisites: [n5-no-nominalizer, n5-plain-form-present], status: planned }
+  - { id: n4-dake-de, title: "〜だけで (одного лишь)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n5-dake], status: planned }
+  - { id: n4-wake, title: "〜わけ (смысл, объяснение)", level: n4, register: neutral, group: "Причина и цель", prerequisites: [n4-n-desu], status: planned }
+
+  # ───────────── N4: условия ─────────────
+  - { id: n4-to-conditional, title: "〜と (условие, неизбежное следствие)", level: n4, register: neutral, group: "Условия", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-ba-conditional, title: "〜ば (условие)", level: n4, register: neutral, group: "Условия", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-tara, title: "〜たら (когда, если)", level: n4, register: neutral, group: "Условия", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n4-nara, title: "〜なら (если речь о…)", level: n4, register: neutral, group: "Условия", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-tara-dou, title: "〜たらどう (может, стоит…)", level: n4, register: neutral, group: "Условия", prerequisites: [n4-tara], status: planned }
+  - { id: n4-ba-yokatta, title: "〜ばよかった (надо было)", level: n4, register: neutral, group: "Условия", prerequisites: [n4-ba-conditional], status: planned }
+  - { id: n4-ba-hodo, title: "〜ば〜ほど (чем…, тем…)", level: n4, register: neutral, group: "Условия", prerequisites: [n4-ba-conditional], status: planned }
+  - { id: n4-ba-ii, title: "〜ばいい・〜たらいい (хорошо бы)", level: n4, register: neutral, group: "Условия", prerequisites: [n4-ba-conditional, n4-tara], status: planned }
+  - { id: n4-to-ii, title: "〜といい (хорошо бы, пожелание)", level: n4, register: neutral, group: "Условия", prerequisites: [n4-to-conditional], status: planned }
+  - { id: n4-baai, title: "〜場合 (в случае)", level: n4, register: neutral, group: "Условия", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n4-temo-kamawanai, title: "〜てもかまわない (не возражаю)", level: n4, register: neutral, group: "Условия", prerequisites: [n4-temo, n5-te-mo-ii], status: planned }
+  - { id: n4-made-ni, title: "〜までに (к сроку)", level: n4, register: neutral, group: "Условия", prerequisites: [n5-kara-made], status: planned }
+
+  # ───────────── N4: модальность и впечатления ─────────────
+  - { id: n4-hazu, title: "〜はず (должно быть)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-plain-form-present, n5-deshou], status: planned }
+  - { id: n4-hazu-ga-nai, title: "〜はずがない (не может быть)", level: n4, register: neutral, group: "Модальность", prerequisites: [n4-hazu], status: planned }
+  - { id: n4-darou, title: "〜だろう / 〜だろうか (простая форма предположения)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-deshou], status: planned }
+  - { id: n4-adverbs-certainty, title: "Наречия уверенности: たぶん・きっと・かならず・ぜひ", level: n4, register: neutral, group: "Модальность", prerequisites: [n4-darou, n5-degree-adverbs], status: planned }
+  - { id: n4-sou-appearance, title: "〜そう (выглядит, вот-вот)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-masu-form, n5-i-adjectives], status: planned }
+  - { id: n4-sou-hearsay, title: "〜そうです (говорят, слышал)", level: n4, register: polite, group: "Модальность", prerequisites: [n4-sou-appearance, n5-plain-form-past], status: planned }
+  - { id: n4-ni-yoru-to, title: "〜によると (по данным, по словам)", level: n4, register: neutral, group: "Модальность", prerequisites: [n4-sou-hearsay], status: planned }
+  - { id: n4-rashii, title: "〜らしい (похоже, по слухам)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n4-you-desu, title: "〜ようです (кажется, по виду)", level: n4, register: polite, group: "Модальность", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n4-to-mieru, title: "〜とみえる (похоже на то, что)", level: n4, register: neutral, group: "Модальность", prerequisites: [n4-you-desu], status: planned }
+  - { id: n4-ga-suru, title: "〜がする (запах, вкус, звук)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-wa-vs-ga], status: planned }
+  - { id: n4-garu, title: "〜がる・〜たがる (проявлять чувство и желание)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-tai, n5-i-adjectives], status: planned }
+  - { id: n4-hitsuyou, title: "〜必要がある (нужно)", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-must-variants, title: "Долженствование: 〜なければいけない・〜ないといけない・〜なくてはならない", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-nakereba-narimasen], status: planned }
+  - { id: n4-embedded-question, title: "Косвенные вопросы: 〜か / 〜かどうか", level: n4, register: neutral, group: "Модальность", prerequisites: [n5-plain-form-present, n5-ka-question], status: planned }
+
+  # ───────────── N4: сравнение и подобие ─────────────
+  - { id: n4-you-na, title: "〜ような・〜ように (подобие)", level: n4, register: neutral, group: "Сравнение и подобие", prerequisites: [n5-plain-form-present, n5-particle-no], status: planned }
+  - { id: n4-hodo-nai, title: "〜ほど〜ない (не так… как)", level: n4, register: neutral, group: "Сравнение и подобие", prerequisites: [n5-comparison, n5-plain-form-present], status: planned }
+  - { id: n4-no-you-na, title: "〜のよう (как, словно)", level: n4, register: neutral, group: "Сравнение и подобие", prerequisites: [n4-you-na], status: planned }
+  - { id: n4-mitai, title: "〜みたい (как, похоже)", level: n4, register: casual, group: "Сравнение и подобие", prerequisites: [n4-you-desu], status: planned }
+  - { id: n4-toori, title: "〜通り (так, как)", level: n4, register: neutral, group: "Сравнение и подобие", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-ni-yotte, title: "〜によって (в зависимости от, посредством)", level: n4, register: neutral, group: "Сравнение и подобие", prerequisites: [n5-particle-de-means], status: planned }
+  - { id: n4-ni-tsuite, title: "〜について (о, относительно)", level: n4, register: neutral, group: "Сравнение и подобие", prerequisites: [n5-particle-wo], status: planned }
+  - { id: n4-sa-mi, title: "〜さ・〜み (абстрактные существительные)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-i-adjectives, n5-na-adjectives], status: planned }
+  - { id: n4-noun-suffixes, title: "Суффиксы существительных: 〜屋・〜家・〜者・〜用・〜語", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-particle-no], status: planned }
+  - { id: n4-kara-de-tsukuru, title: "から作る и で作る (материал, сырьё)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-particle-de-means, n5-kara-made], status: planned }
+  - { id: n4-mama, title: "〜まま (оставаясь как есть)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-plain-form-past], status: planned }
+  - { id: n4-zu-ni, title: "〜ずに (не делая, формальное)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-nai-de], status: planned }
+  - { id: n4-masu-stem-connective, title: "Основа ます как соединительная форма", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-masu-form, n5-te-connect], status: planned }
+  - { id: n4-aida-ni-uchi-ni, title: "〜間に・〜うちに (пока)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-te-imasu-progress, n5-toki], status: planned }
+  - { id: n4-tokoro, title: "〜ところ (момент действия)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-plain-form-past, n5-te-imasu-progress], status: planned }
+  - { id: n4-bakari, title: "〜ばかり (только, лишь)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-dake], status: planned }
+  - { id: n4-ta-bakari, title: "〜たばかり (только что)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n4-bakari, n5-plain-form-past], status: planned }
+  - { id: n4-zutsu, title: "〜ずつ (по)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-counters], status: planned }
+  - { id: n4-okini, title: "〜おきに (через)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-counters, n5-dates], status: planned }
+  - { id: n4-made-verb, title: "〜まで (даже)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-kara-made], status: planned }
+  - { id: n4-koso, title: "こそ (именно, как раз)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-wa-vs-ga], status: planned }
+  - { id: n4-nanka-nante-nado, title: "〜なんか・〜なんて・〜など (как, например)", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-ya-toka], status: planned }
+  - { id: n4-demo-example, title: "〜でも (например, хотя бы): お茶でも飲みませんか", level: n4, register: neutral, group: "Словообразование", prerequisites: [n5-masen-ka, n5-ya-toka], status: planned }
+
+  # ───────────── N4: залоги ─────────────
+  - { id: n4-passive, title: "Страдательный залог 〜られる", level: n4, register: neutral, group: "Залоги", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-passive-adversative, title: "Страдательный залог неудобства (雨に降られた)", level: n4, register: neutral, group: "Залоги", prerequisites: [n4-passive], status: planned }
+  - { id: n4-causative, title: "Побудительный залог 〜させる", level: n4, register: neutral, group: "Залоги", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-causative-te-kudasai, title: "〜させてください (позвольте мне)", level: n4, register: polite, group: "Залоги", prerequisites: [n4-causative, n5-te-kudasai], status: planned }
+  - { id: n4-causative-passive, title: "Побудительно-страдательный залог 〜させられる", level: n4, register: neutral, group: "Залоги", prerequisites: [n4-passive, n4-causative], status: planned }
+
+  # ───────────── N4: кэйго ─────────────
+  - { id: n4-keigo-overview, title: "Кэйго: сонкэйго и кэндзёго (обзор)", level: n4, register: polite, group: "Кэйго", prerequisites: [n5-speech-styles, n5-o-go-prefix], status: planned }
+  - { id: n4-keigo-special-verbs, title: "Особые глаголы кэйго: いらっしゃる・召し上がる・申す・参る", level: n4, register: polite, group: "Кэйго", prerequisites: [n4-keigo-overview], status: planned }
+  - { id: n4-passive-respect, title: "〜られる как вежливая форма", level: n4, register: polite, group: "Кэйго", prerequisites: [n4-passive, n4-keigo-overview], status: planned }
+  - { id: n4-o-ni-naru, title: "お〜になる (почтительное действие)", level: n4, register: polite, group: "Кэйго", prerequisites: [n4-keigo-overview, n5-masu-form], status: planned }
+  - { id: n4-o-kudasai, title: "お〜ください (вежливая просьба)", level: n4, register: polite, group: "Кэйго", prerequisites: [n4-o-ni-naru, n5-te-kudasai], status: planned }
+  - { id: n4-o-suru, title: "お〜する (смиренное действие)", level: n4, register: polite, group: "Кэйго", prerequisites: [n4-o-ni-naru], status: planned }
+  - { id: n4-itadaku-kudasaru, title: "いただく・くださる (бенефактивы в кэйго)", level: n4, register: polite, group: "Кэйго", prerequisites: [n4-keigo-overview, n4-te-morau], status: planned }
+
+  # ───────────── N4: разговорный трек (casual / slang) ─────────────
+  - { id: n4-chau, title: "〜ちゃう / 〜じゃう", level: n4, register: casual, group: "Разговорная речь", status: draft }
+  - { id: n4-toku, title: "〜とく (сокращение 〜ておく)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n4-te-oku, n4-chau], status: planned }
+  - { id: n4-cha-dame, title: "〜ちゃだめ / 〜ちゃいけない (запрет, разг.)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-te-wa-ikemasen, n4-chau], status: planned }
+  - { id: n4-casual-requests, title: "Просьбы между друзьями: 〜て / 〜てくれる？ / 〜てもらえる？ / 〜てよ", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-te-kudasai, n4-te-kureru], status: planned }
+  - { id: n4-casual-invitations, title: "Приглашения между друзьями: 〜よう / 〜ない？ / 〜ようぜ", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n4-volitional, n5-masen-ka, n5-casual-da], status: planned }
+  - { id: n4-nakya, title: "〜なきゃ / 〜なくちゃ (надо, разг.)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-nakereba-narimasen, n4-chau], status: planned }
+  - { id: n4-rough-imperative, title: "Грубый императив: 行け・来い・しろ", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-plain-form-present], status: planned }
+  - { id: n4-rough-prohibition, title: "Грубый запрет 〜な", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n4-rough-imperative], status: planned }
+  - { id: n4-final-particles, title: "Заключительные частицы: な・かしら・だい・かい・ぞ・ぜ (мужская и женская речь)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-yo-ne, n5-casual-da], status: planned }
+  - { id: n4-kana, title: "〜かな (интересно, наверное)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da, n4-final-particles], status: planned }
+  - { id: n4-tte, title: "〜って (цитата, тема, «говорят»)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-to-iu, n5-casual-da], status: planned }
+  - { id: n4-n-da-yo-ne, title: "〜んだよね (подтверждение, мягкая уверенность)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n4-n-desu, n5-yo-ne, n5-casual-da], status: planned }
+  - { id: n4-casual-desho, title: "〜でしょ？ / 〜だろ？ (подтверждение в разговоре)", level: n4, register: casual, group: "Разговорная речь", prerequisites: [n5-deshou, n5-casual-da], status: planned }
+  - { id: n3-jan, title: "〜じゃん / 〜じゃない？ (ведь, же)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da, n5-casual-question], status: planned }
+  - { id: n3-kke, title: "〜っけ (вспоминание: «как там было…»)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da, n5-plain-form-past], status: planned }
+  - { id: n3-datte, title: "〜だって (даже; потому что; говорят)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n4-tte], status: planned }
+  - { id: n3-mon, title: "〜もん (потому что, оправдание)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da], status: planned }
+  - { id: n3-nai-to-n, title: "〜ん вместо 〜ない (わからん, 知らん)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-plain-form-present, n5-casual-contractions], status: planned }
+  - { id: n3-ra-nuki, title: "ら抜き言葉: 食べれる, 見れる (потенциал без ら)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n4-potential, n5-casual-da], status: planned }
+  - { id: n3-vowel-contractions, title: "Стяжения гласных: すごい→すげー, ない→ねー, やっぱり→やっぱ", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-contractions, n5-i-adjectives], status: planned }
+  - { id: n3-teka, title: "〜てか (кстати, вообще-то)", level: n3, register: slang, group: "Разговорная речь", prerequisites: [n4-tte], status: planned }
+  - { id: n3-tte-koto, title: "〜ってこと / 〜ってことは (то есть)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n4-tte, n4-koto-nominalizer], status: planned }
+  - { id: n3-slang-intensifiers, title: "Усилители: めっちゃ・超・マジで", level: n3, register: slang, group: "Разговорная речь", prerequisites: [n5-totemo-amari], status: planned }
+  - { id: n3-ppoi, title: "〜っぽい (похожий на, -ообразный)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-i-adjectives], status: planned }
+  - { id: n3-ssu, title: "〜っす (молодёжная вежливость)", level: n3, register: slang, group: "Разговорная речь", prerequisites: [n5-casual-da], status: planned }
+  - { id: n3-kansai-basics, title: "Кансайский диалект: основы (〜やん, 〜へん, あかん)", level: n3, register: casual, group: "Разговорная речь", prerequisites: [n5-casual-da, n3-jan], status: planned }
